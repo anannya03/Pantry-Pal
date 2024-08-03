@@ -11,7 +11,7 @@ import './spinner.css';
 
 // Initialize OpenAI API
 const openai = new OpenAI({
-  apiKey: 'sk-proj-vbhxqWTwKcdsFGL9hRQlT3BlbkFJZ6fRdT1EpoEkvCGCYY9f',
+  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
   dangerouslyAllowBrowser: true
 });
 
@@ -264,7 +264,7 @@ export default function Home() {
       <main className="flex bg-black min-h-screen flex-col items-center justify-between p-14 sm:p-24">
         <div className="z-10 max-w-5xl w-full items-center justify-between font-oswald text-sm">
           <h1 className="text-6xl p-4 pt-0 mt-1 mb-4 text-center text-bert">Pantry Tracker</h1>
-
+          
           <div className="flex justify-center mb-4">
             <button
               onClick={() => setView('list')}
