@@ -10,10 +10,10 @@ require("dotenv").config();
 import './spinner.css';
 
 // Initialize OpenAI API
-// const openai = new OpenAI({
-//   apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
-//   dangerouslyAllowBrowser: true
-// });
+const openai = new OpenAI({
+  apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true
+});
 
 const classifyImage = async (imageData) => {
   const response = await fetch('/api/classifyImage', {
@@ -160,6 +160,7 @@ export default function Home() {
       reader.readAsDataURL(imageBlob);
       reader.onloadend = async () => {
         const base64data = reader.result;
+        console.log('Captured image data:', base64data);
         const classifiedText = await classifyImage(base64data);
         if (classifiedText && classifiedText.toLowerCase() !== 'false') {
           await addImageItem(classifiedText);
@@ -363,7 +364,7 @@ export default function Home() {
 
           {view === 'camera' && (
             <div className="bg-dark-grey p-4 rounded mb-4">
-                <Camera style={{ height: '300px', width: '100%' }} ref={cameraRef} aspectRatio={16 / 9} />
+                <Camera style={{ height: '200px', width: '100%' }} ref={cameraRef} aspectRatio={16 / 9} />
               <button
                 onClick={capturePhoto}
                 className="text-lg bg-bert border-torquiose text-black p-3 rounded hover:bg-torquiose mt-4"
