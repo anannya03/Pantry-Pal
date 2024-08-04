@@ -262,26 +262,26 @@ export default function Home() {
   return (
     <div>
       <ToastContainer/>
-      <main className="flex bg-black min-h-screen flex-col items-center justify-between p-14 sm:p-24">
+      <main className="flex bg-black min-h-screen flex-col items-center justify-between p-14 pt-4 sm:p-24">
         <div className="z-10 max-w-5xl w-full items-center justify-between font-oswald text-sm">
-          <h1 className="text-6xl p-4 pt-0 mt-1 mb-4 text-center text-bert">Pantry Tracker</h1>
-
-          <div className="flex justify-center mb-4">
+          <h1 className="text-6xl p-4 pt-0 mt-1 mb-4 text-center text-bert">Pantry Pal</h1>
+          <p className="text-pink-950 text-center text-lg font-medium mb-6 p-4 pt-0">Welcome to Pantry Pal: your kitchen's new best friend! <br/> Snap, track, and cook with ease—organizing your pantry has never been this fun!</p>
+          <div className="flex justify-center mb-4 mt-2">
             <button
               onClick={() => setView('list')}
-              className={`text-base p-2 rounded ${view === 'list' ? 'bg-torquiose text-black' : 'bg-bert text-white'} mr-4`}
+              className={`text-base p-2 rounded hover:bg- ${view === 'list' ? 'bg-torquiose text-pink-950' : 'bg-bert text-white'} mr-4`}
             >
               Pantry List
             </button>
             <button
               onClick={() => setView('camera')}
-              className={`text-base p-2 rounded ${view === 'camera' ? 'bg-torquiose text-black' : 'bg-bert text-white'} mr-4`}
+              className={`text-base p-2 rounded ${view === 'camera' ? 'bg-torquiose text-pink-950' : 'bg-bert text-white'} mr-4`}
             >
               Click Image
             </button>
             <button
               onClick={() => handleRecipeClick()}
-              className={`text-base p-2 rounded ${view === 'recipe' ? 'bg-torquiose text-black' : 'bg-bert text-white'} mr-4`}
+              className={`text-base p-2 rounded ${view === 'recipe' ? 'bg-torquiose text-pink-950' : 'bg-bert text-white'} mr-4`}
             >
               Recipe Finder
             </button>

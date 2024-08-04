@@ -1,6 +1,6 @@
 /* Create a spinner.css file for spinner styles */
 .spinner {
-    border: 16px solid #f3f3f3; /* Light grey */
+    border: 16px solid #ece4e7; /* Light grey */
     border-top: 16px solid #330217; /* Blue */
     border-radius: 50%;
     width: 20px;
