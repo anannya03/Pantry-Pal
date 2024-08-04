@@ -291,7 +291,7 @@ export default function Home() {
             <>
               <div className="flex justify-center mb-4">
                 <input
-                  className="w-1/2 p-3 mb-4 border-light-grey bg-dark-grey text-white rounded outline-none"
+                  className="w-1/2 p-3 mb-4 border-light-grey bg-pinkk text-kohl rounded outline-none"
                   type="text"
                   placeholder="Search Item"
                   value={searchItem}
@@ -299,17 +299,17 @@ export default function Home() {
                 />
               </div>
 
-              <div className="bg-dark-grey p-4 rounded">
+              <div className="bg-pinkk p-4 rounded">
                 <form className="grid grid-cols-6 items-center font-sans" onSubmit={addItem}>
                   <input
-                    className="col-span-3 p-3 border-light-grey bg-white text-black outline-none"
+                    className="col-span-3 p-3 border-light-grey bg-white text-kohl outline-none"
                     type="text"
                     placeholder="Enter Item"
                     value={newItem.name}
                     onChange={(event) => setNewItem({ ...newItem, name: event.target.value })}
                   />
                   <input
-                    className="col-span-2 p-3 border-light-grey bg-white mx-4 text-black outline-none"
+                    className="col-span-2 p-3 border-light-grey bg-white mx-4 text-kohl outline-none"
                     type="number"
                     placeholder="Quantity"
                     value={newItem.quantity}
@@ -325,9 +325,9 @@ export default function Home() {
 
                 <ul>
                   {filteredItems.map((item, id) => (
-                    <li key={id} className="my-4 w-full bg-slate-950 flex justify-between items-center font-outfit text-base">
+                    <li key={id} className="my-4 w-full bg-black flex justify-between items-center font-outfit text-base">
                       <div className="p-2 w-full flex justify-between items-center md:ml-10">
-                        <span className="capitalize">{item.name}</span>
+                        <span className="capitalize text-pink-950 font-semibold">{item.name}</span>
                         <div className="flex items-center space-x-12 md:mr-24">
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity - 1)}
@@ -335,7 +335,7 @@ export default function Home() {
                           >
                             -
                           </button>
-                          <span>{item.quantity}</span>
+                          <span className="text-pink-950">{item.quantity}</span>
                           <button
                             onClick={() => updateQuantity(item.id, item.quantity + 1)}
                             className="text-black bg-bert p-2 rounded-full hover:bg-torquiose"
@@ -351,7 +351,7 @@ export default function Home() {
                       </div>
                       <button
                         onClick={() => deleteItem(item.id)}
-                        className="ml-8 p-2 border-l-2 border-slate-900 hover:bg-slate-900 w-16 hover:text-torquiose"
+                        className="ml-8 text-pink-950 p-2 border-l-2 border-pink-950 hover:bg-pink-950 w-16 hover:text-torquiose"
                       >
                         x
                       </button>
@@ -363,7 +363,7 @@ export default function Home() {
           )}
 
           {view === 'camera' && (
-            <div className="bg-dark-grey p-4 rounded mb-4">
+            <div className="bg-pinkk p-4 rounded mb-4">
                 <Camera style={{ height: '200px', width: '100%' }} ref={cameraRef} aspectRatio={16 / 9} />
               <button
                 onClick={capturePhoto}
@@ -377,27 +377,30 @@ export default function Home() {
 {view === 'recipe' && (
             <div>
               {loading ? (
-                <div className="flex justify-center items-center ">
+                <div className="flex justify-center items-center mt-10">
                   <div className="spinner flex justify-center"></div> {/* Loading spinner */}
                 </div>
-              ) : (
-                recipes.length > 0 && (
-                  <div className="mt-4 bg-dark-grey p-4 rounded">
+              ) : recipes.length > 0 ?
+                 (
+                  <div className="mt-4 bg-pinkk p-4 rounded">
                     <h2 className="text-4xl mb-4 text-center text-bert">Recipe Suggestions</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {recipes.map((recipe, index) => (
-                        <div key={index} className="bg-slate-900 p-4 rounded shadow-md">
-                          <h3 className="text-xl font-bold mb-2 text-torquiose">{recipe.name}</h3>
-                          <p className="text-white"><strong>Ingredients:</strong></p>
-                          <p className="text-white whitespace-pre-wrap mb-2">{recipe.ingredients}</p>
-                          <p className="text-white"><strong>Instructions:</strong></p>
-                          <p className="text-white whitespace-pre-wrap mb-2">{recipe.instructions}</p>
+                        <div key={index} className="bg-black p-4 rounded shadow-md">
+                          <h3 className="text-xl font-bold mb-2 text-pink-950">{recipe.name}</h3>
+                          <p className="text-torquiose"><strong>Ingredients:</strong></p>
+                          <p className="text-kohl whitespace-pre-wrap mb-2">{recipe.ingredients}</p>
+                          <p className="text-torquiose"><strong>Instructions:</strong></p>
+                          <p className="text-kohl whitespace-pre-wrap mb-2">{recipe.instructions}</p>
                         </div>
                       ))}
                     </div>
                   </div>
-                )
-              )}
+                ) : (
+                  <div className="mt-4 bg-pinkk p-4 rounded">
+                    <p className="text-xl text-center text-bert">Could not find any recipes in this search. Please try again.</p>
+                  </div>
+                )}
             </div>
           )}
 
